@@ -6,7 +6,7 @@
   "version": "1.0.7",
   "description": "",
   "scripts": {
-    "rollup": "rollup -c",
+    "build": "rollup -c",
     "test": "jest"
   },
   "keywords": [],
