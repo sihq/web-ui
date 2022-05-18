@@ -11,7 +11,8 @@
     "test": "jest",
     "storybook:build": "build-storybook",
     "storybook:watch": "start-storybook -p 6006",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "git-cz"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
+    "@commitlint/cz-commitlint": "^17.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.2",
@@ -38,6 +40,7 @@
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
     "commitiquette": "^1.2.1",
+    "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
@@ -58,12 +61,11 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
-    "commitizen": "^4.2.4",
     "husky": "^8.0.1"
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "@commitlint/cz-commitlint"
     }
   },
   "commitlint": {
