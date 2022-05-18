@@ -1,0 +1,19 @@
+name: Pull request validation
+
+on:
+  pull_request:
+        types: ['opened', 'edited', 'reopened', 'synchronize']
+
+jobs:
+  bump_version:
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+    runs-on: ubuntu-latest
+    name: "Bump version and create changelog with commitizen"
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Validate PR title with commitizen
+        uses: CashStory/commitizen-action-pr@1.0.1
