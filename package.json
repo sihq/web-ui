@@ -6,10 +6,11 @@
   "version": "1.0.7",
   "description": "",
   "scripts": {
+    "start": "storybook:watch",
     "build": "rollup -c",
     "test": "jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook:build": "build-storybook",
+    "storybook:watch": "start-storybook -p 6006"
   },
   "keywords": [],
   "author": "",
