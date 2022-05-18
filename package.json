@@ -63,7 +63,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "commitiquette"
+      "path": "cz-conventional-changelog"
     }
   },
   "commitlint": {
