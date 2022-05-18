@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  test-and-build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,5 +18,3 @@ jobs:
         run: npm install
       - name: Run tests 
         run: npm test
-      - name: Run build 
-        run: npm build
