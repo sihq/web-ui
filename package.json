@@ -1,5 +1,8 @@
 {
   "name": "@sihq/web-ui",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/sihq"
+  },
   "version": "1.0.2",
   "description": "",
   "scripts": {
