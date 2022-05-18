@@ -37,6 +37,7 @@
     "@types/react": "^18.0.9",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
+    "commitiquette": "^1.2.1",
     "cz-conventional-changelog": "^3.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
@@ -62,7 +63,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "commitiquette"
     }
   },
   "commitlint": {
