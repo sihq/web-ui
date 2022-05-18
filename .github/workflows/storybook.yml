@@ -13,7 +13,7 @@ jobs:
         name: Gen dummy page
         run: | 
           npm install
-          npm storybook:build
+          npm run storybook:build
       -
         name: Deploy to GitHub Pages
         if: success()
