@@ -2,6 +2,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from "rollup-plugin-postcss";
+import reactScopedCssPlugin from 'rollup-plugin-react-scoped-css';
 import resolve from "@rollup/plugin-node-resolve";
 //NEW
 import { terser } from "rollup-plugin-terser";
@@ -32,6 +33,8 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
+      reactScopedCssPlugin(),
+  
 
       // NEW
       terser(),
