@@ -6,7 +6,7 @@
   "version": "1.0.7",
   "description": "",
   "scripts": {
-    "start": "storybook:watch",
+    "start": "npm run storybook:watch",
     "build": "rollup -c",
     "test": "jest",
     "storybook:build": "build-storybook",
@@ -45,12 +45,14 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "postcss": "^8.4.14",
     "react": "^18.0.0",
     "rollup": "^2.73.0",
     "rollup-plugin-dts": "^4.2.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "tailwindcss": "^3.0.24",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   },
@@ -61,7 +63,9 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
-    "husky": "^8.0.1"
+    "babel-plugin-react-scoped-css": "^1.1.1",
+    "husky": "^8.0.1",
+    "rollup-plugin-react-scoped-css": "^0.6.1"
   },
   "config": {
     "commitizen": {
