@@ -1,0 +1,109 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import * as OutlineIcons from "./outline";
+import * as SolidIcons from "./solid";
+
+<Meta title="Components/Icons" />
+
+export const Decorator = (S) => (
+  <div
+    style={{
+      display: "inline-flex",
+      flexWrap: "wrap",
+      gap: "1rem",
+      flexDirection: "column",
+      width: '25%'
+    }}
+  >
+    <S />
+  </div>
+);
+
+# Icons
+
+Icons are sourced from https://heroicons.com/
+
+
+## Thin
+
+<Canvas>
+  <Story name="Thin">
+    {Object.entries(OutlineIcons).map((i) => {
+      const Name = i[0];
+      const Icon = i[1];
+      return Decorator(() => (
+        <div style={{
+          display: 'flex',
+            justifyContent: "flex-start",
+          alignItems: "center",
+         flexDirection: "column",
+         background: '#eee',
+         margin: '10px',
+         padding: '20px 10px',
+         borderRadius: '10px'
+        }}>
+          <Icon style={{ height: 150, width: 150, color: '#333', strokeWidth: 0.6 }} />
+          <div style={{ color: '#666', fontWeight:'bold', marginTop:'20px' }}>{Name}</div>
+        </div>
+      ));
+    })}
+  </Story>
+</Canvas>
+
+## Outline
+
+`import * from '@sihq/web-ui/icons/outline'`
+
+    stroke-width: 0.5;
+
+<Canvas>
+  <Story name="Outline">
+    {Object.entries(OutlineIcons).map((i) => {
+      const Name = i[0];
+      const Icon = i[1];
+      return Decorator(() => (
+        <div style={{
+          display: 'flex',
+            justifyContent: "flex-start",
+          alignItems: "center",
+         flexDirection: "column",
+         background: '#eee',
+         margin: '10px',
+         padding: '20px 10px',
+         borderRadius: '10px'
+        }}>
+          <Icon style={{ height: 45, width: 45, color: '#333' }} />
+          <div style={{ color: '#666', fontWeight:'bold', marginTop:'20px'}}>{Name}</div>
+        </div>
+      ));
+    })}
+  </Story>
+</Canvas>
+
+## Solid
+
+`import * from '@sihq/web-ui/icons/solid'`
+
+<Canvas>
+  <Story name="Solid">
+    {Object.entries(SolidIcons).map((i) => {
+      const Name = i[0];
+      const Icon = i[1];
+      return Decorator(() => (
+        <div style={{
+          display: 'flex',
+            justifyContent: "flex-start",
+          alignItems: "center",
+         flexDirection: "column",
+         background: '#eee',
+         margin: '10px',
+         padding: '20px 10px',
+         borderRadius: '10px'
+        }}>
+          <Icon style={{ height: 45, width: 45, color: '#333' }} />
+          <div style={{ color: '#666', fontWeight:'bold', marginTop:'20px'}}>{Name}</div>
+        </div>
+      ));
+    })}
+  </Story>
+</Canvas>

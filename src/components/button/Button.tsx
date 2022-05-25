@@ -1,42 +1,43 @@
 import "./Button.scoped.css";
 
+import { Enhancer, Loading } from "../../utilities";
 import {
   TypeOfEnhancer,
-  TypeOfIcon,
-  TypeOfLabel,
+  TypeOfIntent,
   TypeOfShape,
   TypeOfSize,
   TypeOfVariant,
 } from "../../types";
 
-import { Accessory } from "../../utilities";
 import React from "react";
+import classnames from "classnames";
+import { withProperties } from "../../contexts/PropertiesContext";
 
 export interface ButtonProps {
-  label: TypeOfLabel;
+  children?: React.ReactNode;
 
-  size?: TypeOfSize;
-  variant?: TypeOfVariant;
+
   shape?: TypeOfShape;
 
+  size?: TypeOfSize;
+  intent?: TypeOfIntent;
+  variant?: TypeOfVariant;
   startEnhancer?: TypeOfEnhancer;
   endEnhancer?: TypeOfEnhancer;
-
-  icon?: TypeOfIcon;
+  disabled?: boolean;
+  loading?: boolean;
+  as?: keyof Pick<JSX.IntrinsicElements, 'a' | 'button' | 'span'>
 }
 
-const Button = (props: ButtonProps): JSX.Element => {
-  const { startEnhancer, endEnhancer } = props;
+export const Button: React.FunctionComponent<ButtonProps & React.HTMLAttributes<HTMLOrSVGElement>> = withProperties((props: ButtonProps) => {
+  const { size, intent, variant, shape, disabled, loading, children, as: Tag = 'button', ...native} = props
+  return <Tag className={classnames(["button", size, intent, variant, shape], { disabled, loading })} disabled={disabled || loading} {...native}>
+        <Loading />
+        <Enhancer start />
+        <span className="label">{children}</span>
+        <Enhancer end />
+  </Tag>;
+});
 
-  return (
-    <button className="button">
-      <>
-        <Accessory Enhancer={startEnhancer} />
-        {props.label}
-        <Accessory Enhancer={endEnhancer} />
-      </>
-    </button>
-  );
-};
 
 export default Button;

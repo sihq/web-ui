@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Input from "./";
+
+<Meta title="Components/Input" component={Input} />
+
+export const Template = (args) => <Input {...args} />;
+
+export const Decorator = (S) => (
+  <div
+    style={{
+      display: "inline-flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: "1rem",
+    }}
+  >
+    <S />
+  </div>
+);
+
+# Inputs
+
+This is a sample
+
+## Properties
+
+<ArgsTable of={Input} />
+
+## Variants
+
+<Canvas>
+  <Story name="Variants" decorators={[Decorator]}>
+    <Input type="textbox"  />
+        <Input type="pin" />
+  </Story>
+</Canvas>

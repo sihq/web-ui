@@ -1,0 +1,220 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Button from "./";
+
+import {
+  ChevronDoubleRightIcon,
+  ChevronDownIcon,
+  ClockIcon,
+  CameraIcon,
+  TrashIcon,
+  XIcon,
+  CheckIcon,
+  ArrowSmRightIcon,
+} from "../icons/outline";
+
+<Meta title="Components/Buttons" component={Button} />
+
+export const Template = (args) => <Button {...args} />;
+
+export const Decorator = (S) => (
+  <div
+    style={{
+      display: "inline-flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: "1rem",
+    }}
+  >
+    <S />
+  </div>
+);
+
+# Buttons
+
+This is a sample Sass snippet example with Storybook docs
+
+## Properties
+
+<ArgsTable of={Button} />
+
+## intents
+
+<Canvas>
+  <Story name="intents" decorators={[Decorator]}>
+    <div className="flex items-center space-x-4">
+      <div className="w-28 text-xs font-bold">default</div>
+      <Button children="Default" intent="default" />
+      <Button children="Primary" intent="primary" />
+      <Button children="Secondary" intent="secondary" />
+      <Button children="Tertiary" intent="tertiary" />
+      <Button children="Consumptive" intent="consumptive" />
+      <Button children="Destructive" intent="destructive" />
+      <Button children="Constructive" intent="constructive" />
+    </div>
+    <div className="flex items-center space-x-4">
+      <div className="w-28 text-xs font-bold">outlined</div>
+      <Button children="Default" intent="default" variant="outlined" />
+      <Button children="Primary" intent="primary" variant="outlined" />
+      <Button children="Secondary" intent="secondary" variant="outlined" />
+      <Button children="Tertiary" intent="tertiary" variant="outlined" />
+      <Button children="Consumptive" intent="consumptive" variant="outlined" />
+      <Button children="Destructive" intent="destructive" variant="outlined" />
+      <Button children="Constructive" intent="constructive" variant="outlined" />
+    </div>
+    <div className="flex items-center space-x-4">
+      <div className="w-28 text-xs font-bold">transparent</div>
+      <Button children="Default" intent="default" variant="transparent" />
+      <Button children="Primary" intent="primary" variant="transparent" />
+      <Button children="Secondary" intent="secondary" variant="transparent" />
+      <Button children="Tertiary" intent="tertiary" variant="transparent" />
+      <Button children="Consumptive" intent="consumptive" variant="transparent" />
+      <Button children="Destructive" intent="destructive" variant="transparent" />
+      <Button children="Constructive" intent="constructive" variant="transparent" />
+    </div>
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="Sizes" decorators={[Decorator]}>
+    <Button children="XS" size="xs" />
+    <Button children="SM" size="sm" />
+    <Button children="MD" size="md" />
+    <Button children="LG" size="lg" />
+    <Button children="XL" size="xl" />
+  </Story>
+</Canvas>
+
+## Enhanchers
+
+<Canvas>
+  <Story name="Enhanchers" decorators={[Decorator]}>
+    <Button
+      children="Start enhancer"
+      startEnhancer={() => <ChevronDoubleRightIcon />}
+    />
+    <Button children="End enhancer" endEnhancer={() => <ChevronDownIcon />} />
+    <Button
+      children="Both enhancer"
+      startEnhancer={() => <ClockIcon />}
+      endEnhancer={() => <ChevronDownIcon />}
+    />
+  </Story>
+</Canvas>
+
+## Loading
+
+<Canvas>
+  <Story name="Loading" decorators={[Decorator]}>
+    <Button
+      children="Start enhancer"
+      loading
+      startEnhancer={() => <ChevronDoubleRightIcon />}
+    />
+    <Button
+      children="End enhancer"
+      loading
+      endEnhancer={() => <ChevronDownIcon />}
+    />
+    <Button children="Primary" intent="primary" loading />
+    <Button children="Secondary" intent="secondary" loading />
+    <Button children="Tertiary" intent="tertiary" loading />
+    <Button children="Consumptive" intent="consumptive" loading />
+    <Button children="Destructive" intent="destructive" loading />
+    <Button children="Constructive" intent="constructive" loading />
+  </Story>
+</Canvas>
+
+## Shapes
+
+<Canvas>
+  <Story name="Shapes" decorators={[Decorator]}>
+    <Button children="Pill" shape="pill" size="xs" />
+    <Button
+      children="Square"
+      shape="square"
+      size="xs"
+      children={<CameraIcon style={{ height: 16, width: 16 }} />}
+    />
+    <Button
+      shape="circle"
+      size="xs"
+      children={<CameraIcon style={{ height: 16, width: 16 }} />}
+    />
+    <Button
+      shape="circle"
+      intent="secondary"
+      size="xl"
+      children={<XIcon style={{ height: 25, width: 25 }} />}
+    />
+    <Button
+      shape="circle"
+      intent="destructive"
+      size="xl"
+      children={<XIcon style={{ height: 14, width: 14 }} />}
+    />
+    <Button
+      shape="circle"
+      intent="constructive"
+      size="xl"
+      children={<CheckIcon style={{ height: 14, width: 14 }} />}
+    />
+    <Button
+      shape="square"
+      intent="tertiary"
+      children={
+        <span style={{ padding: "0.3rem" }}>
+          <TrashIcon style={{ height: 25, width: 25 }} />
+        </span>
+      }
+    />
+  </Story>
+</Canvas>
+
+## As custom tag
+
+<Canvas>
+  <Story name="Custom tag" decorators={[Decorator]}>
+    <label style={{ display: "inline-flex" }}>
+      <input accept="image/*" style={{ display: "none" }} type="file" />
+      <Button children="Upload a file" as="span" />
+    </label>
+    <Button children="Link button" as="a" href="#test" />
+    <label style={{ position: "relative" }}>
+      <select
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          opacity: 0,
+        }}
+      >
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+        <option>Option 4</option>
+      </select>
+      <Button
+        children="Select menu"
+        as="span"
+        endEnhancer={() => <ChevronDownIcon />}
+      />
+    </label>
+    <form action="/">
+      <Button
+        children="Submit button"
+        intent="primary"
+        type="submit"
+        endEnhancer={() => <ArrowSmRightIcon />}
+      />
+    </form>
+  </Story>
+</Canvas>
