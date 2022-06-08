@@ -1,24 +1,31 @@
 import './Pin.scoped.css';
 
-import React, { useState } from "react";
+import PropertiesContext, { withProperties } from "../../../contexts/PropertiesContext";
+import React, { useContext, useState } from "react";
 
 import MultiRef from 'react-multi-ref';
 import Textbox from "../textbox";
 import classnames from "classnames";
-import { withProperties } from "../../../contexts/PropertiesContext";
+import { useonChange } from '../../../hooks/useonChange';
 
 export interface PinProps {
  
 }
 
 export const Pin = withProperties((props: PinProps) =>{
-    const mask = true;
+  const {mask = true, size = 4, alphanumeric = false} = props
+ 
+
+    const { autofocus } = useContext(PropertiesContext)
+
+
+    const onChange = useonChange()
 
     const placeholder = "○";
  
     const refs = new MultiRef();
 
-    const [value,setValue] = useState(['','','','','','']);
+    const [value,setValue] = useState([...Array(size)].map(()=>''));
     const [hasFocus,setFocus] = useState(false)
 
     const getMaskStyle = (i: number) => {
@@ -31,8 +38,7 @@ export const Pin = withProperties((props: PinProps) =>{
 
 
       const validateInput = (input)=>{
-        const validate = true;
-        if(validate){
+        if(!alphanumeric){
             if(input.match(/^[0-9]+$/)){
                 return true;
             }
@@ -43,7 +49,8 @@ export const Pin = withProperties((props: PinProps) =>{
 
 
     return <div className='pin-input'>{[...Array(value.length)].map((x, i) => <Textbox
-
+      
+      data-autofocus={autofocus}
         key={i}
         inputRef={refs.ref(i)}
         onBlur={() => setFocus(false)}

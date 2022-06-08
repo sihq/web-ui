@@ -1,6 +1,7 @@
 import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
 
 import Button from "./";
+import { State } from "../../../.storybook/State";
 
 import {
   ChevronDoubleRightIcon,
@@ -26,6 +27,7 @@ export const Decorator = (S) => (
       flexWrap: "wrap",
       gap: "1rem",
     }}
+    className="divide-y divide-gray-300"
   >
     <S />
   </div>
@@ -43,7 +45,7 @@ This is a sample Sass snippet example with Storybook docs
 
 <Canvas>
   <Story name="intents" decorators={[Decorator]}>
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 pt-5">
       <div className="w-28 text-xs font-bold">default</div>
       <Button children="Default" intent="default" />
       <Button children="Primary" intent="primary" />
@@ -53,7 +55,7 @@ This is a sample Sass snippet example with Storybook docs
       <Button children="Destructive" intent="destructive" />
       <Button children="Constructive" intent="constructive" />
     </div>
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 pt-5">
       <div className="w-28 text-xs font-bold">outlined</div>
       <Button children="Default" intent="default" variant="outlined" />
       <Button children="Primary" intent="primary" variant="outlined" />
@@ -63,7 +65,7 @@ This is a sample Sass snippet example with Storybook docs
       <Button children="Destructive" intent="destructive" variant="outlined" />
       <Button children="Constructive" intent="constructive" variant="outlined" />
     </div>
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 pt-5">
       <div className="w-28 text-xs font-bold">transparent</div>
       <Button children="Default" intent="default" variant="transparent" />
       <Button children="Primary" intent="primary" variant="transparent" />
@@ -75,6 +77,166 @@ This is a sample Sass snippet example with Storybook docs
     </div>
   </Story>
 </Canvas>
+
+## Loading
+
+<Canvas>
+  <Story name="Loading" decorators={[Decorator]}>
+    <State>
+      {([{ loading = true, disabled = false, icons = false, shape = 'default', size = 'sm' },setSettings])=>{
+        return (
+          <div>
+            <div className="px-5 p-3 rounded bg-gray-100 text-xs flex items-center space-x-2">
+               <label className="flex items-center space-x-2 px-4 p-1 rounded-full bg-gray-200">
+                <span className="text-xs font-bold">Shape:</span>
+                <select onChange={({target:{value}})=>setSettings({shape:value})}>
+                  <option>default</option>
+                  <option>pill</option>
+                  <option>circle</option>
+                    <option>square</option>
+                </select>
+              </label>
+              <label className="flex items-center space-x-2 px-4 p-1 rounded-full bg-gray-200">
+                <span className="text-xs font-bold">Size:</span>
+                <select value={size} onChange={({target:{value}})=>setSettings({size:value})}>
+                  <option>xs</option>
+                  <option>sm</option>
+                  <option>md</option>
+                  <option>lg</option>
+                  <option>xl</option>
+                </select>
+              </label>
+                  <label className="flex items-center space-x-2 px-4 p-1 rounded-full bg-gray-200">
+                <input type="checkbox" checked={disabled} onChange={()=>setSettings({disabled:!disabled})} /> <span>disabled</span>
+              </label>
+              <label className="flex items-center space-x-2 px-4 p-1 rounded-full bg-gray-200">
+                <input type="checkbox" checked={!loading} onChange={()=>setSettings({loading:!loading})} /> <span>loading</span>
+              </label>
+                   <label className="flex items-center space-x-2 px-4 p-1 rounded-full bg-gray-200">
+                <input type="checkbox" checked={icons} onChange={()=>setSettings({icons:!icons})} /> <span>icons</span>
+              </label>
+            </div>
+            <div className="flex items-center space-x-4 pt-5">
+              <div className="w-28 text-xs font-bold">filled</div>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Default" intent="default" disabled={disabled} size={size} shape={shape} loading={!loading || on} onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<CameraIcon style={{ height: 16, width: 16 }} />:"Primary"} intent="primary" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Secondary" intent="secondary" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Tertiary" intent="tertiary" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Consumptive" intent="consumptive" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<TrashIcon style={{ height: 16, width: 16 }} />:"Destructive"} intent="destructive" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<CheckIcon style={{ height: 16, width: 16 }} />:"Constructive"} intent="constructive" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+            </div>
+            <div className="flex items-center space-x-4 pt-5">
+              <div className="w-28 text-xs font-bold">outlined</div>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Default" intent="default" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<CameraIcon style={{ height: 16, width: 16 }} />:"Primary"} intent="primary" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Secondary" intent="secondary" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Tertiary" intent="tertiary" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Consumptive" intent="consumptive" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<TrashIcon style={{ height: 16, width: 16 }} />:"Destructive"} intent="destructive" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<CheckIcon style={{ height: 16, width: 16 }} />:"Constructive"} intent="constructive" variant="outlined" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+            </div>
+            <div className="flex items-center space-x-4 pt-5">
+              <div className="w-28 text-xs font-bold">transparent</div>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Default" intent="default" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<CameraIcon style={{ height: 16, width: 16 }} />:"Primary"} intent="primary" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Secondary" intent="secondary" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Tertiary" intent="tertiary" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children="Consumptive" intent="consumptive" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<TrashIcon style={{ height: 16, width: 16 }} />:"Destructive"} intent="destructive" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+              <State toggle reverts>
+                {([on,toggle])=>{
+                  return <Button children={icons?<CheckIcon style={{ height: 16, width: 16 }} />:"Constructive"} intent="constructive" variant="transparent" disabled={disabled} size={size} shape={shape} loading={!loading || on}  onClick={()=>toggle()} />
+                }}
+              </State>
+            </div>
+          </div>
+        )
+      }}
+    </State>
+  </Story>
+</Canvas>
+
 
 ## Sizes
 
@@ -105,28 +267,8 @@ This is a sample Sass snippet example with Storybook docs
   </Story>
 </Canvas>
 
-## Loading
 
-<Canvas>
-  <Story name="Loading" decorators={[Decorator]}>
-    <Button
-      children="Start enhancer"
-      loading
-      startEnhancer={() => <ChevronDoubleRightIcon />}
-    />
-    <Button
-      children="End enhancer"
-      loading
-      endEnhancer={() => <ChevronDownIcon />}
-    />
-    <Button children="Primary" intent="primary" loading />
-    <Button children="Secondary" intent="secondary" loading />
-    <Button children="Tertiary" intent="tertiary" loading />
-    <Button children="Consumptive" intent="consumptive" loading />
-    <Button children="Destructive" intent="destructive" loading />
-    <Button children="Constructive" intent="constructive" loading />
-  </Story>
-</Canvas>
+
 
 ## Shapes
 

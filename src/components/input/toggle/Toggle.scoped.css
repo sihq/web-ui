@@ -1,0 +1,32 @@
+
+/* .toggle{
+    @apply h-4 w-4 block bg-slate-300 rounded;
+} */
+
+*[data-input='toggle'] input:checked + .checked {
+    opacity: 1;
+}
+*[data-input='toggle'] input:checked ~ .checked-peg {
+    transform: translateX(100%);
+}
+
+
+.toggle{
+    @apply flex-1;
+    /* @apply border border-slate-200;
+    @apply hover:bg-slate-100; */
+    @apply rounded;
+   
+}
+.toggle label{
+    @apply p-2 flex-1;
+    @apply cursor-pointer;
+}
+
+.toggle label:focus-within .switch{
+    @apply outline-offset-2 outline-1 outline-gray-400 outline-dashed;
+}
+.toggle label:focus-within .label{
+
+    @apply underline decoration-dashed underline-offset-4 decoration-gray-400;
+}

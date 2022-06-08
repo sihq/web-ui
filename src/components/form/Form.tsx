@@ -15,7 +15,7 @@ export interface FormProps {
 // Synthetic form purpose
 
 const Form = (props: FormProps) => {
-  const { action, children, focus = false } = props;
+  const { action, children, focus = true } = props;
   return (
     <section>
       <FocusLock disabled={!focus}>{children}</FocusLock>

@@ -1,0 +1,6 @@
+.content{
+    @apply bg-gray-50;
+    @apply border-y border-gray-200;
+    @apply p-3;
+}
+

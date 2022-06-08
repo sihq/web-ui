@@ -11,6 +11,7 @@ export const Loading = () => {
 
   if (loading) {
     return (
+      
       <span className="loading">
         <svg
           version="1.1"

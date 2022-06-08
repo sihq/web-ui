@@ -9,6 +9,7 @@ export const Template = (args) => <Input {...args} />;
 export const Decorator = (S) => (
   <div
     style={{
+      width:500,
       display: "inline-flex",
       justifyContent: "flex-start",
       alignItems: "center",
@@ -28,11 +29,39 @@ This is a sample
 
 <ArgsTable of={Input} />
 
-## Variants
+
+
+
+
+## Toggle
 
 <Canvas>
-  <Story name="Variants" decorators={[Decorator]}>
-    <Input type="textbox"  />
-        <Input type="pin" />
+  <Story name="Toggle" decorators={[Decorator]}>
+    <Input type="toggle" />
   </Story>
 </Canvas>
+
+## Pin
+
+<Canvas>
+  <Story name="Pin" decorators={[Decorator]}>
+    <Input type="pin" />
+  </Story>
+</Canvas>
+
+## Textbox
+
+<Canvas>
+  <Story name="Textbox" decorators={[Decorator]}>
+    <Input type="textbox"  />
+  </Story>
+</Canvas>
+
+## Rich textbox
+
+<Canvas>
+  <Story name="Rich Textbox" decorators={[Decorator]}>
+    <Input type="richtextbox" />
+  </Story>
+</Canvas>
+

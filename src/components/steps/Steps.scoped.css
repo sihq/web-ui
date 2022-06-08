@@ -1,0 +1,32 @@
+
+
+
+.steps{
+    @apply flex items-center justify-center space-x-1;
+}
+
+.before{
+    @apply flex flex-1 items-center justify-end space-x-1;
+}
+.after{
+    @apply flex flex-1 items-center justify-start space-x-1;
+}
+
+.current{
+    @apply h-1.5 w-4;
+    @apply bg-sky-600;
+    @apply rounded-full;
+}
+
+
+
+.complete{
+    @apply h-1 w-1;
+    @apply bg-slate-500;
+    @apply rounded-full;
+}
+.other{
+    @apply h-1 w-1;
+    @apply bg-slate-300;
+    @apply rounded-full;
+}
