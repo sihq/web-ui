@@ -1,42 +1,55 @@
 import "./Button.scoped.css";
 
+import { Enhancer, Loading } from "../../utilities";
+import React, { useContext } from "react";
 import {
   TypeOfEnhancer,
-  TypeOfIcon,
-  TypeOfLabel,
+  TypeOfIntent,
   TypeOfShape,
   TypeOfSize,
   TypeOfVariant,
 } from "../../types";
 
-import { Accessory } from "../../utilities";
-import React from "react";
+import SectionsContext from "../../contexts/SectionsContext";
+import classnames from "classnames";
+import { withProperties } from "../../contexts/PropertiesContext";
 
 export interface ButtonProps {
-  label: TypeOfLabel;
+  children?: React.ReactNode;
 
-  size?: TypeOfSize;
-  variant?: TypeOfVariant;
+
   shape?: TypeOfShape;
 
+  size?: TypeOfSize;
+  intent?: TypeOfIntent;
+  variant?: TypeOfVariant;
   startEnhancer?: TypeOfEnhancer;
   endEnhancer?: TypeOfEnhancer;
-
-  icon?: TypeOfIcon;
+  disabled?: boolean;
+  loading?: boolean;
+  as?: keyof Pick<JSX.IntrinsicElements, 'a' | 'button' | 'span'>
+  onClick?: string | VoidFunction
 }
 
-const Button = (props: ButtonProps): JSX.Element => {
-  const { startEnhancer, endEnhancer } = props;
+export const Button: React.FunctionComponent<ButtonProps & React.HTMLAttributes<HTMLOrSVGElement>> = withProperties((props: ButtonProps) => {
+  const { size, intent = 'default', variant = 'filled', shape, disabled, loading, children, as: Tag = 'button', onClick, ...native} = props
+ const [,{increment,decrement}] = useContext(SectionsContext)
+  let action = ()=>{}
+  if(onClick === 'next'){
+    action = ()=> increment()
+  }else   if(onClick === 'back'){
+    action = ()=> decrement()
+  }else{
+    action = onClick
+  }
 
-  return (
-    <button className="button">
-      <>
-        <Accessory Enhancer={startEnhancer} />
-        {props.label}
-        <Accessory Enhancer={endEnhancer} />
-      </>
-    </button>
-  );
-};
+  return <Tag onClick={action} className={classnames(["button", size, intent, variant, shape], { disabled, loading })} disabled={disabled || loading} {...native}>
+        <Loading />
+        <Enhancer start />
+        <span className="label">{children}</span>
+        <Enhancer end />
+  </Tag>;
+});
+
 
 export default Button;

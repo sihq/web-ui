@@ -1,0 +1,49 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Form from "./";
+import Input from "../input";
+import Button from "../button";
+
+
+<Meta title="Components/Form" component={Form} />
+
+export const Template = (args) => <Form {...args} />;
+
+export const Decorator = (S) => (
+  <div
+    style={{
+      display: "inline-flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: "1rem",
+    }}
+  >
+    <S />
+  </div>
+);
+
+# Synthetic Form
+
+A Synthetic form is a replacement to the standard html form that allows for nested forms, focus control & disabling.
+
+Note: When using a Form inside of a Modal the Modals focus control & disable control will override the Forms. 
+When using Forms this way rely on the Modal to control the focus and disabling or your Form.
+
+## Properties
+
+<ArgsTable of={Form} />
+
+## Form
+
+<Canvas>
+  <Story name="Form" decorators={[Decorator]}>
+    <Form focus>
+        <div style={{ display:'flex' }}>
+          <Input type="pin" />
+          <Button variant="primary">Submit</Button>
+        </div>
+    </Form>
+ 
+  </Story>
+</Canvas>

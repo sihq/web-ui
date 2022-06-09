@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Field from "./";
+
+<Meta title="Components/Field" component={Field} />
+
+export const Template = (args) => <Field {...args} />;
+
+export const Decorator = (S) => (
+  <div
+    style={{
+      display: "inline-flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: "1rem",
+    }}
+  >
+    <S />
+  </div>
+);
+
+# Fields
+
+A field is an input + a label
+
+## Properties
+
+<ArgsTable of={Field} />
+
+## Example
+
+<Canvas>
+  <Story name="Field" decorators={[Decorator]}>
+    <Field  />
+  </Story>
+</Canvas>

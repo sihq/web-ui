@@ -1,0 +1,108 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Modal, { Header, Footer, Content, Title } from "./";
+import Form from "../form";
+import Input from "../input";
+import Button from "../button";
+import Steps from "../steps";
+import { Section, Sections} from "../section";
+import { DeviceMobileIcon } from "@heroicons/react/outline";
+
+
+import { MultiSectionModal } from '../../../examples/multi-section-modal';
+import { NewVersionModal } from '../../../examples/new-version';
+import { ConfirmModal } from '../../../examples/confirm-modal';
+import { UnlockModal } from '../../../examples/unlock-modal';
+import { CancelModal } from '../../../examples/cancel-modal';
+import { AttachQR } from '../../../examples/attach-qr';
+
+
+<Meta title="Components/Modal" component={Modal} />
+
+export const Template = (args) => <Modal {...args} />;
+
+export const Decorator = (S) => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: "1rem",
+      position: "absolute",
+      height: "100%",
+      width: "100%",
+    }}
+  >
+    <S />
+  </div>
+);
+
+# Modals
+
+A field is an input + a label
+
+## Properties
+
+<ArgsTable of={Modal} />
+
+## Example closed
+
+<Canvas>
+  <Story name="Modal" decorators={[Decorator]}>
+    <Modal>Contents of modal</Modal>
+  </Story>
+</Canvas>
+
+
+
+## Example form
+
+<Canvas>
+  <Story name="Modal form" decorators={[Decorator]}>
+   <MultiSectionModal />
+  </Story>
+</Canvas>
+
+## NewVersionModal
+
+<Canvas>
+  <Story name="NewVersionModal" decorators={[Decorator]}>
+   <NewVersionModal />
+  </Story>
+</Canvas>
+
+## ConfirmModal
+
+<Canvas>
+  <Story name="ConfirmModal" decorators={[Decorator]}>
+   <ConfirmModal />
+  </Story>
+</Canvas>
+
+## Unlock
+
+<Canvas>
+  <Story name="Unlock" decorators={[Decorator]}>
+   <UnlockModal />
+  </Story>
+</Canvas>
+
+## Cancel
+
+<Canvas>
+  <Story name="Cancel" decorators={[Decorator]}>
+   <CancelModal />
+  </Story>
+</Canvas>
+
+
+## QR Code
+
+<Canvas>
+  <Story name="Attach QR" decorators={[Decorator]}>
+   <AttachQR />
+  </Story>
+</Canvas>
+
+

@@ -1,0 +1,4 @@
+.footer{
+    @apply flex items-center justify-end space-x-2;
+    @apply p-3;
+}

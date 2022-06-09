@@ -1,0 +1,5 @@
+.enhancer{
+    @apply flex items-center justify-center;
+    min-height: 100%;
+    min-width:14px;
+}

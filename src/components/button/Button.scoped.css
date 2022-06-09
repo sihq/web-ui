@@ -1,3 +1,535 @@
 .button{
-    @apply bg-blue-500;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    @apply relative outline-none overflow-hidden;
+    @apply flex items-center justify-center flex-grow;
+    @apply py-2.5 px-4 space-x-3;
+    @apply font-semibold text-xs no-underline;
+    @apply border border-white border-solid;
+
+    @apply transition-all ease-in-out duration-200;
+
+    @apply bg-white text-gray-700;
+
+
+    @apply shadow rounded;
+    @apply cursor-pointer select-none;
+
+
 }
+button .label{
+    @apply flex items-center justify-center;
+    
+}
+
+
+/* SIZES */
+button.xs{
+    @apply py-1 px-2 space-x-1;
+    @apply text-xs;
+}
+button.sm{
+    @apply py-2 px-4 space-x-2;
+    @apply text-xs;
+}
+button.md{
+    @apply py-2.5 px-6 space-x-3;
+    @apply text-xs;
+}
+button.lg{
+    @apply py-2.5 px-6 space-x-3;
+    @apply text-base;
+}
+button.xl{
+    @apply py-4 px-8 space-x-3;
+    @apply text-base;
+}
+
+
+
+
+
+
+
+
+
+
+/* Loading */
+
+
+
+
+/* Shapes */
+.button.pill{
+    @apply rounded-full;
+}
+.button.circle{
+    @apply rounded-full aspect-square p-1;
+}
+.button.square{
+    @apply aspect-square p-1;
+}
+
+
+
+
+
+
+
+
+/* INTENTS */
+
+
+/* VARIANTS */
+
+    button.disabled{
+        @apply opacity-50 cursor-not-allowed;
+    }
+    .button.loading{
+        @apply opacity-80 cursor-progress;
+    }
+    
+    /* FILLED ------------------------- */
+        /* -> FILLED -> DEFAULT */
+        .button.filled.default{
+            @apply shadow bg-white;
+            @apply border-0;
+            @apply text-gray-500;
+        }
+        .button.filled.default:hover{
+            @apply bg-gray-50;
+        }
+        .button.filled.default:active:hover,
+        .button.filled.default:active{
+            @apply bg-gray-200;
+            @apply transform scale-95;
+        }
+        .button.filled.default:focus-visible{
+            @apply outline-1 outline-gray-400 outline-dashed;
+        }
+        /* -> FILLED -> PRIMARY */
+        .button.filled.primary{
+            @apply shadow bg-sky-500;
+            @apply border-0;
+            @apply text-white;
+        }
+        .button.filled.primary:hover{
+            @apply bg-sky-600;
+        }
+        .button.filled.primary.loading,
+        .button.filled.primary:active:hover,
+        .button.filled.primary:active{
+            @apply bg-sky-800;
+            @apply transform scale-95;
+        }
+        .button.filled.primary:focus-visible{
+            @apply outline-1 outline-sky-800 outline-dashed;
+        }
+        /* -> FILLED -> SECONDARY */
+        .button.filled.secondary{
+            @apply shadow bg-slate-500;
+            @apply border-0;
+            @apply text-white;
+        }
+        .button.filled.secondary:hover{
+            @apply bg-slate-600;
+        }
+        .button.filled.secondary.loading,
+        .button.filled.secondary:active:hover,
+        .button.filled.secondary:active{
+            @apply bg-slate-800;
+            @apply transform scale-95;
+        }
+        .button.filled.secondary:focus-visible{
+            @apply outline-1 outline-slate-800 outline-dashed;
+        }
+        /* -> FILLED -> TERTIARY */
+        .button.filled.tertiary{
+            @apply shadow bg-gray-200;
+            @apply border-0;
+            @apply text-gray-500;
+        }
+        .button.filled.tertiary:hover{
+            @apply bg-gray-300;
+        }
+        .button.filled.tertiary.loading,
+        .button.filled.tertiary:active:hover,
+        .button.filled.tertiary:active{
+            @apply bg-gray-400;
+            @apply transform scale-95;
+        }
+        .button.filled.tertiary:focus-visible{
+            @apply outline-1 outline-gray-400 outline-dashed;
+        }
+        /* -> FILLED -> CONSUMPTIVE */
+        .button.filled.consumptive{
+            @apply shadow bg-amber-500;
+            @apply border-0;
+            @apply text-white;
+        }
+        .button.filled.consumptive:hover{
+            @apply bg-amber-600;
+        }
+        .button.filled.consumptive.loading,
+        .button.filled.consumptive:active:hover,
+        .button.filled.consumptive:active{
+            @apply bg-amber-800;
+            @apply transform scale-95;
+        }
+        .button.filled.consumptive:focus-visible{
+            @apply outline-1 outline-amber-800 outline-dashed;
+        }
+        /* -> FILLED -> DESTRUCTIVE */
+        .button.filled.destructive{
+            @apply shadow bg-rose-500;
+            @apply border-0;
+            @apply text-white;
+        }
+        .button.filled.destructive:hover{
+            @apply bg-rose-600;
+        }
+        .button.filled.destructive.loading,
+        .button.filled.destructive:active:hover,
+        .button.filled.destructive:active{
+            @apply bg-rose-800;
+            @apply transform scale-95;
+        }
+        .button.filled.destructive:focus-visible{
+            @apply outline-1 outline-rose-800 outline-dashed;
+        }
+        /* -> FILLED -> CONSTRUCTIVE */
+        .button.filled.constructive{
+            @apply shadow bg-emerald-500;
+            @apply border-0;
+            @apply text-white;
+        }
+        .button.filled.constructive:hover{
+            @apply bg-emerald-600;
+        }
+        .button.filled.constructive.loading,
+        .button.filled.constructive:active:hover,
+        .button.filled.constructive:active{
+            @apply bg-emerald-800;
+            @apply transform scale-95;
+        }
+        .button.filled.constructive:focus-visible{
+            @apply outline-1 outline-emerald-800 outline-dashed;
+        }
+
+    /* OUTLINED ----------------------- */
+        /* -> OUTLINED -> DEFAULT */
+        .button.outlined.default{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-gray-100;
+            @apply text-gray-500;
+        }
+        .button.outlined.default:hover{
+            @apply ring-1 ring-inset ring-gray-200;
+            @apply border border-solid border-gray-200;
+            @apply text-gray-600;
+        }
+        .button.outlined.default.loading,
+        .button.outlined.default:active:hover,
+        .button.outlined.default:active{
+            @apply bg-gray-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-gray-400;
+            @apply border border-solid border-gray-400;
+            @apply text-gray-600;
+            @apply transform scale-95;
+        }
+        .button.outlined.default:focus-visible{
+            @apply outline-1 outline-gray-400 outline-dashed;
+        }
+        /* -> OUTLINED -> PRIMARY */
+        .button.outlined.primary{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-sky-500;
+            @apply text-sky-500;
+        }
+        .button.outlined.primary:hover{
+            @apply ring-1 ring-inset ring-sky-600;
+            @apply border border-solid border-sky-600;
+            @apply text-sky-600;
+        }
+        .button.outlined.primary.loading,
+        .button.outlined.primary:active:hover,
+        .button.outlined.primary:active{
+            @apply bg-sky-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-sky-800;
+            @apply border border-solid border-sky-800;
+            @apply text-sky-800;
+            @apply transform scale-95;
+        }
+        .button.outlined.primary:focus-visible{
+            @apply outline-1 outline-sky-800 outline-dashed;
+        }
+        /* -> OUTLINED -> SECONDARY */
+        .button.outlined.secondary{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-slate-500;
+            @apply text-slate-500;
+        }
+        .button.outlined.secondary:hover{
+            @apply ring-1 ring-inset ring-slate-600;
+            @apply border border-solid border-slate-600;
+            @apply text-slate-600;
+        }
+        .button.outlined.secondary.loading,
+        .button.outlined.secondary:active:hover,
+        .button.outlined.secondary:active{
+            @apply bg-slate-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-slate-800;
+            @apply border border-solid border-slate-800;
+            @apply text-slate-800;
+            @apply transform scale-95;
+        }
+        .button.outlined.secondary:focus-visible{
+            @apply outline-1 outline-slate-800 outline-dashed;
+        }
+        /* -> OUTLINED -> TERTIARY */
+        .button.outlined.tertiary{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-gray-300;
+            @apply text-gray-400;
+        }
+        .button.outlined.tertiary:hover{
+            @apply ring-1 ring-inset ring-gray-400;
+            @apply border border-solid border-gray-400;
+            @apply text-gray-500;
+        }
+        .button.outlined.tertiary.loading,
+        .button.outlined.tertiary:active:hover,
+        .button.outlined.tertiary:active{
+            @apply bg-gray-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-gray-600;
+            @apply border border-solid border-gray-600;
+            @apply text-gray-600;
+            @apply transform scale-95;
+        }
+        .button.outlined.tertiary:focus-visible{
+            @apply outline-1 outline-gray-400 outline-dashed;
+        }
+        /* -> OUTLINED -> CONSUMPTIVE */
+        .button.outlined.consumptive{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-amber-500;
+            @apply text-amber-500;
+        }
+        .button.outlined.consumptive:hover{
+            @apply ring-1 ring-inset ring-amber-600;
+            @apply border border-solid border-amber-600;
+            @apply text-amber-600;
+        }
+        .button.outlined.consumptive.loading,
+        .button.outlined.consumptive:active:hover,
+        .button.outlined.consumptive:active{
+            @apply bg-amber-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-amber-800;
+            @apply border border-solid border-amber-800;
+            @apply text-amber-800;
+            @apply transform scale-95;
+        }
+        .button.outlined.consumptive:focus-visible{
+            @apply outline-1 outline-amber-800 outline-dashed;
+        }
+        /* -> OUTLINED -> DESTRUCTIVE */
+        .button.outlined.destructive{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-rose-500;
+            @apply text-rose-500;
+        }
+        .button.outlined.destructive:hover{
+            @apply ring-1 ring-inset ring-rose-600;
+            @apply border border-solid border-rose-600;
+            @apply text-rose-600;
+        }
+        .button.outlined.destructive.loading,
+        .button.outlined.destructive:active:hover,
+        .button.outlined.destructive:active{
+            @apply bg-rose-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-rose-800;
+            @apply border border-solid border-rose-800;
+            @apply text-rose-800;
+            @apply transform scale-95;
+        }
+        .button.outlined.destructive:focus-visible{
+            @apply outline-1 outline-rose-800 outline-dashed;
+        }
+        /* -> OUTLINED -> CONSTRUCTIVE */
+        .button.outlined.constructive{
+            @apply shadow-none bg-transparent;
+            @apply border border-solid border-emerald-500;
+            @apply text-emerald-500;
+        }
+        .button.outlined.constructive:hover{
+            @apply ring-1 ring-inset ring-emerald-600;
+            @apply border border-solid border-emerald-600;
+            @apply text-emerald-600;
+        }
+        .button.outlined.constructive.loading,
+        .button.outlined.constructive:active:hover,
+        .button.outlined.constructive:active{
+            @apply bg-emerald-500 bg-opacity-5;
+            @apply ring-1 ring-inset ring-emerald-800;
+            @apply border border-solid border-emerald-800;
+            @apply text-emerald-800;
+            @apply transform scale-95;
+        }
+        .button.outlined.constructive:focus-visible{
+            @apply outline-1 outline-emerald-800 outline-dashed;
+        }
+    /* TRANSPARENT -------------------- */
+        /* -> TRANSPARENT -> DEFAULT */
+        .button.transparent.default{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-gray-500;
+        }
+        .button.transparent.default:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-gray-600;
+        }
+        .button.transparent.default.loading,
+        .button.transparent.default:active:hover,
+        .button.transparent.default:active{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-gray-800;
+            @apply transform scale-95;
+        }
+        .button.transparent.default:focus-visible{
+            @apply outline-1 outline-gray-400 outline-dashed;
+        }
+        /* -> TRANSPARENT -> PRIMARY */
+        .button.transparent.primary{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-sky-500;
+        }
+        .button.transparent.primary:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-sky-600;
+        }
+        .button.transparent.primary.loading,
+        .button.transparent.primary:active:hover,
+        .button.transparent.primary:active{
+            @apply shadow-none bg-sky-500 bg-opacity-5;
+            @apply border-0;
+            @apply text-sky-800;
+            @apply transform scale-95;
+        }
+        .button.transparent.primary:focus-visible{
+            @apply outline-1 outline-sky-400 outline-dashed;
+        }
+        /* -> TRANSPARENT -> SECONDARY */
+        .button.transparent.secondary{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-slate-500;
+        }
+        .button.transparent.secondary:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-slate-600;
+        }
+        .button.transparent.secondary.loading,
+        .button.transparent.secondary:active:hover,
+        .button.transparent.secondary:active{
+            @apply shadow-none bg-slate-500 bg-opacity-5;
+            @apply border-0;
+            @apply text-slate-800;
+            @apply transform scale-95;
+        }
+        .button.transparent.secondary:focus-visible{
+            @apply outline-1 outline-slate-400 outline-dashed;
+        }
+        /* -> TRANSPARENT -> TERTIARY */
+        .button.transparent.tertiary{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-gray-400;
+        }
+        .button.transparent.tertiary:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-gray-500;
+        }
+        .button.transparent.tertiary.loading,
+        .button.transparent.tertiary:active:hover,
+        .button.transparent.tertiary:active{
+            @apply shadow-none bg-gray-500 bg-opacity-5;
+            @apply border-0;
+            @apply text-gray-700;
+            @apply transform scale-95;
+        }
+        .button.transparent.tertiary:focus-visible{
+            @apply outline-1 outline-gray-400 outline-dashed;
+        }
+        /* -> TRANSPARENT -> CONSUMPTIVE */
+        .button.transparent.consumptive{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-amber-500;
+        }
+        .button.transparent.consumptive:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-amber-600;
+        }
+        .button.transparent.consumptive.loading,
+        .button.transparent.consumptive:active:hover,
+        .button.transparent.consumptive:active{
+            @apply shadow-none bg-amber-500 bg-opacity-5;
+            @apply border-0;
+            @apply text-amber-800;
+            @apply transform scale-95;
+        }
+        .button.transparent.consumptive:focus-visible{
+            @apply outline-1 outline-amber-400 outline-dashed;
+        }
+        /* -> TRANSPARENT -> DESTRUCTIVE */
+        .button.transparent.destructive{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-rose-500;
+        }
+        .button.transparent.destructive:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-rose-600;
+        }
+        .button.transparent.destructive.loading,
+        .button.transparent.destructive:active:hover,
+        .button.transparent.destructive:active{
+            @apply shadow-none bg-rose-500 bg-opacity-5;
+            @apply border-0;
+            @apply text-rose-800;
+            @apply transform scale-95;
+        }
+        .button.transparent.destructive:focus-visible{
+            @apply outline-1 outline-rose-400 outline-dashed;
+        }
+        /* -> TRANSPARENT -> CONSTRUCTIVE */
+        .button.transparent.constructive{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-emerald-500;
+        }
+        .button.transparent.constructive:hover{
+            @apply shadow-none bg-transparent;
+            @apply border-0;
+            @apply text-emerald-600;
+        }
+        .button.transparent.constructive.loading,
+        .button.transparent.constructive:active:hover,
+        .button.transparent.constructive:active{
+            @apply shadow-none bg-emerald-500 bg-opacity-5;
+            @apply border-0;
+            @apply text-emerald-800;
+            @apply transform scale-95;
+        }
+        .button.transparent.constructive:focus-visible{
+            @apply outline-1 outline-emerald-400 outline-dashed;
+        }
+

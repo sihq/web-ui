@@ -1,0 +1,10 @@
+.button .loading{
+    @apply flex items-center justify-center;
+    @apply w-4 aspect-square;
+}
+.button.lg .loading{
+    @apply w-6;
+}
+.button.xl .loading{
+    @apply w-6;
+}
