@@ -1,5 +1,4 @@
-import "./Richtextbox.scoped.css";
-
+import { Editor, InputWrapper } from "./Richtextbox.style";
 import React, { createRef, useCallback, useEffect, useState } from "react";
 
 import Button from "../../button";
@@ -14,32 +13,26 @@ export const Richtextbox = withProperties((props: TextboxProps) => {
   const { ...native } = props;
   const editor = createRef<HTMLDivElement>();
 
-
-    const [html,setHtml] = useState('')
+  const [html, setHtml] = useState("");
 
   return (
     <>
-      
-        <input type="hidden" />
+      <input type="hidden" />
 
-        <div className="richtextbox">
-          <div className="flex flex-col flex-1">
-
+      <InputWrapper>
+        <div className="flex flex-col flex-1">
           <ContentEditable
             innerRef={editor}
-            className="editor"
-            tagName="div"
-            html={html} 
-            disabled={false} 
-            onChange={(evt)=>setHtml(evt.target.value)} // handle innerHTML change
-            onBlur={()=>{}}
-        />
+            tagName={Editor}
+            html={html}
+            disabled={false}
+            onChange={(evt) => setHtml(evt.target.value)} // handle innerHTML change
+            onBlur={() => {}}
+          />
 
-
-            <Toolbar editor={editor} />
-          </div>
+          <Toolbar editor={editor} />
         </div>
-      
+      </InputWrapper>
     </>
   );
 });
