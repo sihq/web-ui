@@ -1,7 +1,8 @@
 import './Toggle.scoped.css';
 
 import PropertiesContext, { withProperties } from "../../../contexts/PropertiesContext";
-import React, { useContext, useState } from "react";
+
+import React from "react";
 
 export interface ToggleProps {
     children?: React.ReactNode

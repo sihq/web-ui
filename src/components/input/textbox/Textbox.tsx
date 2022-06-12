@@ -1,16 +1,15 @@
-import './Textbox.scoped.css';
-
+import { HtmlTextbox } from './Textbox.style';
 import React from "react";
-import classnames from "classnames";
 import { withProperties } from "../../../contexts/PropertiesContext";
 
 export interface TextboxProps {
-    inputRef: any
+    inputRef?: any
+    autofocus?: boolean;
 }
 
 export const Textbox = withProperties((props: TextboxProps)=>{
     const { inputRef, ...native } = props
-    return <input className='textbox' type="text" ref={inputRef} {...native} />
+    return <HtmlTextbox type="text" ref={inputRef ?? null} {...native} />
 })
 
 export default Textbox;

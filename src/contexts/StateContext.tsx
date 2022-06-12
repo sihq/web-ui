@@ -17,7 +17,7 @@ export function withState<T extends WithStateProps = WithStateProps>(Component: 
             </StateContext.Provider>
         )
     }
-
 }
+
 
 export default StateContext;

@@ -16,12 +16,12 @@ export const Editor = styled(RichTextEditor)`
   border:0px;
   display:flex;
   flex-direction: column;
+  flex:1;
 
-  .RichTextEditor__root___2QXK-{
-    font:inherit;
-  }
+  font-family:inherit;
+  font-size: inherit;
 
-  > .EditorToolbar__root___3_Aqz{
+  .EditorToolbar__root___3_Aqz{
     order:2;
     border-top: 1px solid #ccc;
     border-bottom:0px;
@@ -39,6 +39,7 @@ export const Editor = styled(RichTextEditor)`
   }
   .EditorToolbar__root___3_Aqz{
     margin:0px;
+    z-index:1;
   }
 
 

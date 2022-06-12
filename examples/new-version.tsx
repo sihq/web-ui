@@ -10,7 +10,7 @@ import { ViewGridAddIcon } from "@heroicons/react/solid";
 
 export const NewVersionModal = () => {
   return (
-    <Modal open size="lg">
+    <Modal isOpen size="lg">
 
         <Form focus>
           <Header>

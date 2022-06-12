@@ -1,5 +1,7 @@
+import React, { useEffect } from "react";
+import { useForm, withForm } from "../../contexts/FormContext";
+
 import FocusLock from "react-focus-lock";
-import React from "react";
 
 export interface FormProps {
   action?: string;
@@ -9,17 +11,21 @@ export interface FormProps {
     | "multipart/form-data"
     | "text/plain";
   children?: React.ReactNode;
-  focus?: boolean;
+  autofocus?: boolean;
 }
 
 // Synthetic form purpose
 
 const Form = (props: FormProps) => {
-  const { action, children, focus = true } = props;
+  const { action, children, autofocus = true } = props;
+  const { isFocued, releaseFocus, restrainFocus } = useForm();
+
+  useEffect(() => { autofocus ? restrainFocus() : releaseFocus() }, [autofocus]);
+  
   return (
     <section>
-      <FocusLock disabled={!focus}>{children}</FocusLock>
+      <FocusLock disabled={!isFocued}>{children}</FocusLock>
     </section>
   );
 };
-export default Form;
+export default withForm(Form);
