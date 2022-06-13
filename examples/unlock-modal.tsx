@@ -1,10 +1,10 @@
 import { Button, Input } from "../src";
+import  { Content, Footer, Header, Title } from "../src/components/modal";
 import { DeviceMobileIcon, LockClosedIcon } from "@heroicons/react/outline";
-import Modal, { Content, Footer, Header, Title } from "../src/components/modal";
-import React, { useEffect, useState } from "react";
 import { useApplication, withApplication } from "../src/contexts/ApplicationContext";
 
 import { ExampleCancelModal } from "./cancel-modal";
+import React from "react";
 import { useForm } from "../src/contexts/FormContext";
 import { useModal } from "../src/contexts/ModalContext";
 
@@ -30,8 +30,6 @@ export const UnlockModal = withApplication(() => {
     </>
   );
 });
-
-
 
 const ExampleModal = () => {
   const { close } = useModal();

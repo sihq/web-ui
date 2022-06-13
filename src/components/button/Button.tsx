@@ -47,12 +47,12 @@ export const Button: React.FunctionComponent<
     endEnhancer,
     ...native
   } = props;
-  const [, { increment, decrement }] = useContext(SectionsContext);
+  const { next, prev } = useContext(SectionsContext) ?? {};
   let action = () => {};
   if (onClick === "next") {
-    action = () => increment();
+    action = () => next();
   } else if (onClick === "back") {
-    action = () => decrement();
+    action = () => prev();
   } else {
     action = onClick;
   }

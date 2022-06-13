@@ -2,19 +2,20 @@ import { PinInput, PinWrapper } from "./Pin.style";
 import PropertiesContext, {
   withProperties,
 } from "../../../contexts/PropertiesContext";
-import React, { useContext, useState } from "react";
+import React, { SyntheticEvent, useContext, useState } from "react";
 
 import MultiRef from "react-multi-ref";
 import { useonChange } from "../../../hooks/useonChange";
 
 export interface PinProps {
   autofocus?: boolean;
+  size?: number;
+  alphanumeric?:boolean;
+  mask?:boolean;
 }
 
 export const Pin = withProperties((props: PinProps) => {
-  const { mask = true, size = 4, alphanumeric = false } = props;
-
-  const { autofocus } = useContext(PropertiesContext);
+  const { mask = true, size = 4, alphanumeric = false, autofocus } = props;
 
   const onChange = useonChange();
 
@@ -33,7 +34,7 @@ export const Pin = withProperties((props: PinProps) => {
     }
   };
 
-  const validateInput = (input) => {
+  const validateInput = (input:string) => {
     if (!alphanumeric) {
       if (input.match(/^[0-9]+$/)) {
         return true;
@@ -52,7 +53,7 @@ export const Pin = withProperties((props: PinProps) => {
           inputRef={refs.ref(i)}
           onBlur={() => setFocus(false)}
           onFocus={() => setFocus(true)}
-          onChange={(event) => {
+          onChange={(event:SyntheticEvent) => {
             const eventValue = event.target.value;
             // in the case of an autocomplete or copy and paste
             if (eventValue.length > 2) {
@@ -94,7 +95,7 @@ export const Pin = withProperties((props: PinProps) => {
               }
             }
           }}
-          onKeyDown={(event) => {
+          onKeyDown={(event: SyntheticEvent) => {
             // if we see a backspace/delete and the input is empty, transfer focus backward
             if (event.key === "Backspace" && value[i] === "" && i > 0) {
               const inputRef = refs.map.get(i - 1);
