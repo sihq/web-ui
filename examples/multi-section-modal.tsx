@@ -1,18 +1,17 @@
 import { Button, Input } from "../src";
-import Modal, { Content, Footer, Header, Title } from "../src/components/modal";
-import React, { useState } from "react";
+import  { Content, Footer, Header, Title } from "../src/components/modal";
 import { Section, Sections } from "../src/components/section";
-import {
-  useApplication,
-  withApplication,
-} from "../src/contexts/ApplicationContext";
+import { useApplication, useForm } from "../src/hooks";
 
 import Form from "../src/components/form";
 import Label from "../src/components/label";
+import React from "react";
 import Steps from "../src/components/steps";
 import { ViewGridAddIcon } from "@heroicons/react/solid";
-import { useForm } from "../src/contexts/FormContext";
 import { useModal } from "../src/contexts/ModalContext";
+import {
+withApplication,
+} from "../src/contexts/ApplicationContext";
 
 export const MultiSectionModal = withApplication(() => {
   const { openModal } = useApplication();

@@ -1,12 +1,11 @@
 import { Button, Input } from "../src";
 import  { Content, Footer, Header, Title } from "../src/components/modal";
 import { DeviceMobileIcon, LockClosedIcon } from "@heroicons/react/outline";
-import { useApplication, withApplication } from "../src/contexts/ApplicationContext";
+import { useApplication, useForm } from "../src/hooks";
 
-import { ExampleCancelModal } from "./cancel-modal";
 import React from "react";
-import { useForm } from "../src/contexts/FormContext";
 import { useModal } from "../src/contexts/ModalContext";
+import { withApplication } from "../src/contexts/ApplicationContext";
 
 export const UnlockModal = withApplication(() => {
 

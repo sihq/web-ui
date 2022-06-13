@@ -1,7 +1,7 @@
 import Modal, { ModalProps } from "../../components/modal/Modal";
 
 import React from "react";
-import { useApplication } from "../../contexts/ApplicationContext";
+import { useApplication } from "../../hooks";
 
 export interface ModalsProps {
   modals: { modal: React.ReactNode; props?: ModalProps }[];

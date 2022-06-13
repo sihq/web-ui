@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { useForm, withForm } from "../../contexts/FormContext";
 
 import FocusLock from "react-focus-lock";
+import { useForm } from "../../hooks";
+import { withForm } from "../../hocs";
 
 export interface FormProps {
   action?: string;

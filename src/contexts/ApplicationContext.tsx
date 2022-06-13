@@ -52,12 +52,6 @@ export function withApplication<T extends object>(
   };
 }
 
-export const useApplication = () => {
-  const context = useContext(ApplicationContext);
-  if (context === null) {
-    throw new Error("Cannot use useApplication outside of Application.");
-  }
-  return context;
-};
+
 
 export default ApplicationContext;

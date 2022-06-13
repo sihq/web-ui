@@ -1,14 +1,13 @@
 import { Button, Input } from "../src";
-import Modal, { Content, Footer, Header, Title } from "../src/components/modal";
-import React, { useState } from "react";
-import {
-  useApplication,
-  withApplication,
-} from "../src/contexts/ApplicationContext";
+import { Content, Footer, Header, Title } from "../src/components/modal";
+import { useApplication, useForm } from "../src/hooks";
 
 import { QrcodeIcon } from "@heroicons/react/outline";
-import { useForm } from "../src/contexts/FormContext";
+import React from "react";
 import { useModal } from "../src/contexts/ModalContext";
+import {
+withApplication,
+} from "../src/contexts/ApplicationContext";
 
 export const AttachQR = withApplication(() => {
   const { openModal } = useApplication();

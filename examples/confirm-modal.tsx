@@ -1,11 +1,11 @@
 import Modal, { Footer, Header, Title } from "../src/components/modal";
 import React, { useState } from "react";
-import { useApplication, withApplication } from "../src/contexts/ApplicationContext";
+import { useApplication, useForm } from "../src/hooks";
 
 import { Button } from "../src";
 import { TrashIcon } from "@heroicons/react/outline";
-import { useForm } from "../src/contexts/FormContext";
 import { useModal } from "../src/contexts/ModalContext";
+import { withApplication } from "../src/contexts/ApplicationContext";
 
 export const ConfirmModal = withApplication(() => {
   const { openModal } = useApplication();
