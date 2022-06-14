@@ -7,7 +7,7 @@ export interface ModalsProps {
   modals: { modal: React.ReactNode; props?: ModalProps }[];
 }
 
-export const Modals = (props: ModalsProps) => {
+export default function Modals(props: ModalsProps){
   const { modals } = props
   const { closeModal } = useApplication();
   return <>{modals.map(({ modal, props = {} }) => {
@@ -29,4 +29,3 @@ export const Modals = (props: ModalsProps) => {
     </>
   )})}</>;
 };
-export default Modals;

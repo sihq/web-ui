@@ -4,8 +4,8 @@ import { useApplication, useForm } from "../src/hooks";
 
 import { Button } from "../src";
 import { TrashIcon } from "@heroicons/react/outline";
-import { useModal } from "../src/contexts/ModalContext";
-import { withApplication } from "../src/contexts/ApplicationContext";
+import { useModal } from "../src/hooks";
+import { withApplication } from "../src/hocs";
 
 export const ConfirmModal = withApplication(() => {
   const { openModal } = useApplication();

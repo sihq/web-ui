@@ -1,9 +1,16 @@
 import tw from "tailwind-styled-components";
 
 export const HtmlTextbox = tw.input`
-    border-solid 
+    border-none 
+    outline-none
     p-1 
     px-2 
+    flex-1
+    bg-transparent
+    w-full
+`;
+export const InputWrapper = tw.div`
+    border-solid 
     flex
     items-center
     justify-center
@@ -21,4 +28,5 @@ export const HtmlTextbox = tw.input`
     focus-within:border-blue-400
     focus-within:ring-blue-400
     focus-within:ring-opacity-20
+    w-full
 `;

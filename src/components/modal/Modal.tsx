@@ -1,7 +1,6 @@
 import "./Modal.scoped.css";
 
-import React, { useEffect, useState } from "react";
-import { useModal, withModal } from "../../contexts/ModalContext";
+import React, { useEffect } from "react";
 
 import Button from "../button";
 import { CSSTransition } from "react-transition-group";
@@ -10,6 +9,8 @@ import { Portal } from "../../utilities";
 import { TypeOfSize } from "../../types";
 import { XIcon } from "@heroicons/react/outline";
 import useHotKeys from '@reecelucas/react-use-hotkeys'
+import { useModal } from "../../hooks";
+import { withModal } from "../../hocs";
 
 export interface ModalProps {
   children?: React.ReactNode;

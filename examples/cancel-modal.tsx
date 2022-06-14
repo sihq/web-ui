@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { useApplication, useForm } from "../src/hooks";
 
 import { BanIcon } from "@heroicons/react/outline";
-import { useModal } from "../src/contexts/ModalContext";
-import { withApplication } from "../src/contexts/ApplicationContext";
+import { useModal } from "../src/hooks";
+import { withApplication } from "../src/hocs";
 
 export const CancelModal = withApplication(() => {
   const {openModal} =  useApplication()

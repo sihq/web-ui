@@ -4,10 +4,10 @@ import { useApplication, useForm } from "../src/hooks";
 
 import { QrcodeIcon } from "@heroicons/react/outline";
 import React from "react";
-import { useModal } from "../src/contexts/ModalContext";
+import { useModal } from "../src/hooks";
 import {
 withApplication,
-} from "../src/contexts/ApplicationContext";
+} from "../src/hocs";
 
 export const AttachQR = withApplication(() => {
   const { openModal } = useApplication();

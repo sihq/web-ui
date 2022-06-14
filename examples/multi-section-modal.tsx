@@ -1,17 +1,15 @@
 import { Button, Input } from "../src";
 import  { Content, Footer, Header, Title } from "../src/components/modal";
 import { Section, Sections } from "../src/components/section";
-import { useApplication, useForm } from "../src/hooks";
+import { useApplication, useForm, useModal } from "../src/hooks";
 
-import Form from "../src/components/form";
 import Label from "../src/components/label";
 import React from "react";
 import Steps from "../src/components/steps";
 import { ViewGridAddIcon } from "@heroicons/react/solid";
-import { useModal } from "../src/contexts/ModalContext";
 import {
 withApplication,
-} from "../src/contexts/ApplicationContext";
+} from "../src/hocs";
 
 export const MultiSectionModal = withApplication(() => {
   const { openModal } = useApplication();
@@ -72,8 +70,8 @@ const ExampleModal = () => {
               </div>
               <div className="flex space-x-3">
                 <div className="flex-1 flex flex-col">
-                  <Label>Phone:</Label>
-                  <Input type="textbox" />
+                  <Label>Address:</Label>
+                  <Input type="address" />
                 </div>
               </div>
             </Section>

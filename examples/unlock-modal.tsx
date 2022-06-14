@@ -4,8 +4,8 @@ import { DeviceMobileIcon, LockClosedIcon } from "@heroicons/react/outline";
 import { useApplication, useForm } from "../src/hooks";
 
 import React from "react";
-import { useModal } from "../src/contexts/ModalContext";
-import { withApplication } from "../src/contexts/ApplicationContext";
+import { useModal } from "../src/hooks";
+import { withApplication } from "../src/hocs";
 
 export const UnlockModal = withApplication(() => {
 
