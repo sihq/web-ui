@@ -85,7 +85,8 @@
     "rollup-plugin-react-scoped-css": "^0.6.1",
     "styled-components": "^5.3.5",
     "tailwind-styled-components": "^2.1.7",
-    "use-places-autocomplete": "^4.0.0"
+    "use-places-autocomplete": "^4.0.0",
+    "uuid": "^8.3.2"
   },
   "config": {
     "commitizen": {

@@ -7,3 +7,7 @@ export { default as Pin } from "./pin";
 export { default as Toggle } from "./toggle";
 export { default as Address } from "./address";
 export { default as Email } from "./email";
+export { default as Phone } from "./phone";
+export { default as Builder } from "./builder";
+
+
