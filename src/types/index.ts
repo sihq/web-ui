@@ -6,3 +6,4 @@ export { default as TypeOfVariant } from "./TypeOfVariant";
 export { default as TypeOfIntent } from "./TypeOfIntent";
 export { default as TypeOfEnhancer } from './TypeOfEnhancer';
 export { default as TypeOfHtmlTag } from './TypeOfHtmlTag';
+export { default as TypeOfAddress } from './TypeOfAddress';

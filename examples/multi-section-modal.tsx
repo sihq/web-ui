@@ -2,14 +2,15 @@ import { Button, Input } from "../src";
 import  { Content, Footer, Header, Title } from "../src/components/modal";
 import { Section, Sections } from "../src/components/section";
 import { useApplication, useForm, useModal } from "../src/hooks";
+import {
+withApplication,
+withForm,
+} from "../src/hocs";
 
 import Label from "../src/components/label";
 import React from "react";
 import Steps from "../src/components/steps";
 import { ViewGridAddIcon } from "@heroicons/react/solid";
-import {
-withApplication,
-} from "../src/hocs";
 
 export const MultiSectionModal = withApplication(() => {
   const { openModal } = useApplication();
@@ -20,7 +21,7 @@ export const MultiSectionModal = withApplication(() => {
           <Button
             intent="constructive"
             onClick={() => {
-              openModal(<ExampleModal />, { size: "sm" });
+              openModal(<ExampleModal autofocus />, { size: "sm" });
             }}
             startEnhancer={() => <ViewGridAddIcon />}
           >
@@ -32,7 +33,7 @@ export const MultiSectionModal = withApplication(() => {
   );
 });
 
-const ExampleModal = () => {
+const ExampleModal = withForm(() => {
   const { close } = useModal();
   const { isSubmitting, submit } = useForm();
 
@@ -65,7 +66,13 @@ const ExampleModal = () => {
               <div className="flex space-x-3">
                 <div className="flex-1 flex flex-col">
                   <Label>Email:</Label>
-                  <Input type="textbox" />
+                  <Input type="email" />
+                </div>
+              </div>
+              <div className="flex space-x-3">
+                <div className="flex-1 flex flex-col">
+                  <Label>Phone:</Label>
+                  <Input type="phone" />
                 </div>
               </div>
               <div className="flex space-x-3">
@@ -125,4 +132,4 @@ const ExampleModal = () => {
       </Sections>
     </>
   );
-};
+});

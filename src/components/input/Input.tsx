@@ -1,6 +1,8 @@
-import Address, { AddressProps } from "./address";
-import { Pin, Richtextarea, Textarea, Textbox, Toggle } from "./";
+import { Address, Email, Pin, Richtextarea, Textarea, Textbox, Toggle } from "./";
+import Phone, { PhoneProps } from "./phone";
 
+import  { AddressProps } from "./address";
+import { EmailProps } from "./email";
 import { PinProps } from "./pin/Pin";
 import React from "react";
 import { RichtextareaProps } from "./richtextarea";
@@ -10,7 +12,7 @@ import { ToggleProps } from "./toggle";
 import { withProperties } from "../../contexts/PropertiesContext";
 
 export interface BaseInputProps {
-  type: "textbox" | "textarea" | "richtextarea" | "pin" | "toggle" | "address";
+  type: "textbox" | "textarea" | "richtextarea" | "pin" | "toggle" | "address" | "email" | "phone";
 }
 
 // Input/output options
@@ -21,6 +23,8 @@ type Overload = {
   (props: RichtextareaProps & BaseInputProps): JSX.Element;
   (props: ToggleProps & BaseInputProps): JSX.Element;
   (props: AddressProps & BaseInputProps): JSX.Element;
+  (props: EmailProps & BaseInputProps): JSX.Element;
+  (props: PhoneProps & BaseInputProps): JSX.Element;
 };
 
 type InputProps = BaseInputProps & Overload;
@@ -40,9 +44,14 @@ export const Input: InputProps = withProperties((config: InputProps) => {
       return <Toggle {...props} />;
     case "address":
       return <Address {...props} />;
+      case "email":
+        return <Email {...props} />;
+      case "phone":
+        return <Phone {...props} />;
     default:
-      return null;
+      return <></>;
   }
+
 });
 
 export default Input;

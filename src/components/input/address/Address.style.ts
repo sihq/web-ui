@@ -12,6 +12,7 @@ export const StartEnhancer = tw(LocationMarkerIcon)`
 export const AddressWrapper = tw.div`
    flex 
    flex-col
+   relative
 `;
 
 

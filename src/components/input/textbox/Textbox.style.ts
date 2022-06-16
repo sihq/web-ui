@@ -29,4 +29,5 @@ export const InputWrapper = tw.div`
     focus-within:ring-blue-400
     focus-within:ring-opacity-20
     w-full
+    items-stretch 
 `;

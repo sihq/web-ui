@@ -34,9 +34,8 @@ const Modal = (props: ModalProps) => {
   
   return <Portal>
   <CSSTransition in={isOpen} timeout={300} classNames="alert" unmountOnExit><div className="dialog">
-      <div className="overlay"></div>
-      <div className={`modal ${size}`}>
-      <Form autofocus>
+      <div className="overlay z-20"></div>
+      <div className={`modal z-30 ${size}`}>
         {children}
         {dismissable ? (
           <span className="close">
@@ -45,7 +44,6 @@ const Modal = (props: ModalProps) => {
             </Button>
           </span>
         ) : null}
-        </Form>
       </div>
     </div></CSSTransition></Portal>;
 };

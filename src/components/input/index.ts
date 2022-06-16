@@ -6,3 +6,4 @@ export { default as Richtextarea } from "./richtextarea";
 export { default as Pin } from "./pin";
 export { default as Toggle } from "./toggle";
 export { default as Address } from "./address";
+export { default as Email } from "./email";
