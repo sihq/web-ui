@@ -5,7 +5,6 @@ import PropertiesContext, {
 import React, { SyntheticEvent, useContext, useState } from "react";
 
 import MultiRef from "react-multi-ref";
-import { useonChange } from "../../../hooks/useonChange";
 
 export interface PinProps {
   autofocus?: boolean;
@@ -17,7 +16,6 @@ export interface PinProps {
 export const Pin = withProperties((props: PinProps) => {
   const { mask = true, size = 4, alphanumeric = false, autofocus } = props;
 
-  const onChange = useonChange();
 
   const placeholder = "○";
 

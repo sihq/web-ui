@@ -31,21 +31,22 @@ const Builder: FunctionComponent<BuilderProps> = () => {
 
   return (
     <Component
-    
+      contentblocks={blocks}
       addBlock={addBlock}
       removeBlock={removeBlock}
       moveBlock={moveBlock}
       selected={selected}
       select={select}
     >
-      <div className="border-solid flex items-center justify-center relative border-2 outline-none transition-all ease-in-out duration-200 flex-1 bg-white border-gray-300 rounded text-gray-700 focus-within:ring-2 focus-within:shadow-inner focus-within:border-blue-400 focus-within:ring-blue-400 focus-within:ring-opacity-20 w-full items-stretch">
+      <div style={{minHeight: 200}} className="border-solid flex items-center justify-center relative border-2 outline-none transition-all ease-in-out duration-200 flex-1 bg-white border-gray-300 rounded text-gray-700 focus-within:ring-2 focus-within:shadow-inner focus-within:border-blue-400 focus-within:ring-blue-400 focus-within:ring-opacity-20 w-full items-stretch">
         <div className="space-y-2 flex-1 p-3 flex-1 flex flex-col p-10 space-y-2 overflow-auto">
           {blocks.map((block) => (
             <Block key={block.id} {...block} />
           ))}
           <Add />
+          
         </div>
-        <div className="w-64 bg-slate-100 border-l border-slate-200">
+        <div className={`w-64 bg-slate-100 border-l border-slate-200`}>
           <Properties />
         </div>
       </div>

@@ -81,6 +81,16 @@ const ExampleModal = withForm(() => {
                   <Input type="address" />
                 </div>
               </div>
+              <div className="flex space-x-3">
+                <div className="flex-1 flex items-center space-x-4">
+                  <Label>Supply:</Label>
+                  <Input type="quantity" />
+                </div>
+                <div className="flex-1 flex items-center space-x-4">
+                  <Label>Amount:</Label>
+                  <Input type="quantity" />
+                </div>
+              </div>
             </Section>
             <Section between={/[1]/}>
               <div className="flex space-x-3">

@@ -44,6 +44,13 @@ const Address: FunctionComponent<AddressProps> = () => {
       );
       const formated = getFormattedString(transformedResponse);
 
+      console.log({
+        address,
+        formated,
+        transformedResponse,
+        address_compponents: results[0].address_components
+      })
+
       setQuery(formated);
       setAddress(transformedResponse);
 
@@ -57,7 +64,7 @@ const Address: FunctionComponent<AddressProps> = () => {
   const searchOptions = {
     location: new google.maps.LatLng(-34, 151),
     radius: 2000,
-    types: ["address"],
+    types: ["establishment"], // establishment | address | locality
   };
 
   return (

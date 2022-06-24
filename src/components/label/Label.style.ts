@@ -6,4 +6,5 @@ export const HtmlLabel = tw.label`
     text-sm
     leading-loose
     select-none
+    flex
 `;

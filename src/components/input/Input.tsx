@@ -1,23 +1,33 @@
 import {
   Address,
+  Builder,
+  Currency,
   Email,
+  Phone,
   Pin,
+  Quantity,
   Richtextarea,
+  Selectlist,
   Textarea,
   Textbox,
   Toggle,
+  Transfer,
 } from "./";
-import Builder, { BuilderProps } from "./builder";
-import Phone, { PhoneProps } from "./phone";
 
 import { AddressProps } from "./address";
+import { BuilderProps } from "./builder";
+import { CurrencyProps } from "./currency";
 import { EmailProps } from "./email";
-import { PinProps } from "./pin/Pin";
+import { PhoneProps } from "./phone";
+import { PinProps } from "./pin";
+import { QuantityProps } from "./quantity";
 import React from "react";
 import { RichtextareaProps } from "./richtextarea";
+import { SelectlistProps } from "./selectlist";
 import { TextareaProps } from "./textarea";
 import { TextboxProps } from "./textbox";
 import { ToggleProps } from "./toggle";
+import { TransferProps } from "./transfer";
 import { withProperties } from "../../contexts/PropertiesContext";
 
 export interface BaseInputProps {
@@ -30,7 +40,11 @@ export interface BaseInputProps {
     | "address"
     | "email"
     | "phone"
-    | "builder";
+    | "builder"
+    | "quantity"
+    | "currency"
+    | "transfer"
+    | "selectlist";
 }
 
 // Input/output options
@@ -44,6 +58,10 @@ type Overload = {
   (props: EmailProps & BaseInputProps): JSX.Element;
   (props: PhoneProps & BaseInputProps): JSX.Element;
   (props: BuilderProps & BaseInputProps): JSX.Element;
+  (props: QuantityProps & BaseInputProps): JSX.Element;
+  (props: CurrencyProps & BaseInputProps): JSX.Element;
+  (props: TransferProps & BaseInputProps): JSX.Element;
+  (props: SelectlistProps & BaseInputProps): JSX.Element;
 };
 
 type InputProps = BaseInputProps & Overload;
@@ -69,6 +87,14 @@ export const Input: InputProps = withProperties((config: InputProps) => {
       return <Phone {...props} />;
     case "builder":
       return <Builder {...props} />;
+    case "quantity":
+      return <Quantity {...props} />;
+    case "currency":
+      return <Currency {...props} />;
+    case "transfer":
+      return <Transfer {...props} />;
+    case "selectlist":
+      return <Selectlist {...props} />;
     default:
       return <></>;
   }
