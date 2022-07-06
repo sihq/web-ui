@@ -1,21 +1,18 @@
 name: Storybook Documentation
-on: 
+on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Gen dummy page
-        run: | 
-          npm install
+      - name: Gen dummy page
+        run: |
+          npm install --force
           npm run storybook:build
-      -
-        name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:

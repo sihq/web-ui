@@ -16,8 +16,8 @@
     "dist": true,
     "node_modules": true,
     ".husky": true,
-    ".github": true,
-    ".github/workflows": true,
+    // ".github": true,
+    // ".github/workflows": true,
     "package-lock.json": true,
     "postcss.config.js": true
   },
