@@ -1,3 +1,4 @@
+import { HtmlLabel } from "./Label.style";
 import React from "react";
 
 export interface LabelProps {
@@ -7,9 +8,9 @@ export interface LabelProps {
 const Label = (props: LabelProps) => {
   const { children } = props;
   return (
-    <label>
+    <HtmlLabel>
         {children}
-    </label>
+    </HtmlLabel>
   );
 };
 export default Label;

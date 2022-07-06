@@ -1,60 +1,52 @@
 import "./Modal.scoped.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Button from "../button";
 import { CSSTransition } from "react-transition-group";
 import Form from "../form";
-import ModalContext from "../../contexts/ModalContext";
 import { Portal } from "../../utilities";
 import { TypeOfSize } from "../../types";
 import { XIcon } from "@heroicons/react/outline";
 import useHotKeys from '@reecelucas/react-use-hotkeys'
+import { useModal } from "../../hooks";
+import { withModal } from "../../hocs";
 
 export interface ModalProps {
   children?: React.ReactNode;
-  open?: boolean;
   size?: TypeOfSize;
-
-  onOpen?: VoidFunction;
-  onClose?: VoidFunction;
   dismissable?: boolean;
+  isOpen?: boolean;
 }
 
 const Modal = (props: ModalProps) => {
-  const { children, size, open = false, dismissable, onClose, onOpen } = props;
+  const { children, size, dismissable, isOpen: opened } = props;
 
-  useEffect(()=>{
-    if(open && onOpen instanceof Function){
-      onOpen()
-    }
-    if(!open && onClose instanceof Function){
-      onClose()
-    }
-  },[onOpen,onClose,open])
+  const { isOpen, open, close } = useModal()
 
-  useHotKeys('Escape', () => {
-    if(open && onClose instanceof Function){
-      onClose() 
-    }
-  });
+  useEffect(()=> { opened ? open() : close() },[opened])
+
+  // useHotKeys('Escape', () => {
+  //   if(open && onClose instanceof Function){
+  //     onClose() 
+  //   }
+  // });
   
-  return <Portal><ModalContext.Provider value={{ isOpen: open }}>
-  <CSSTransition in={open} timeout={300} classNames="alert" unmountOnExit><div className="dialog">
-      <div className="overlay"></div>
-      <div className={`modal ${size}`}>
-      <Form focus>
+  return <Portal>
+  <CSSTransition in={isOpen} timeout={300} classNames="alert" unmountOnExit><div className="dialog">
+      <div className="overlay z-20"></div>
+      <div className={`modal z-30 ${size}`}>
         {children}
-        {dismissable && onClose instanceof Function ? (
+        {dismissable ? (
           <span className="close">
-            <Button shape="circle" intent="secondary" onClick={()=>onClose()}>
+            <Button shape="circle" intent="secondary" onClick={()=> close()}>
               <XIcon style={{ height: 16, width: 16 }} />
             </Button>
           </span>
         ) : null}
-        </Form>
       </div>
-    </div></CSSTransition></ModalContext.Provider></Portal>;
+    </div></CSSTransition></Portal>;
 };
 
-export default Modal;
+
+export default withModal(Modal);

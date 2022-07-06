@@ -9,4 +9,4 @@ export const parameters = {
   },
 }
 
-import './css.css'
+import '!style-loader!css-loader!postcss-loader!./css.css';

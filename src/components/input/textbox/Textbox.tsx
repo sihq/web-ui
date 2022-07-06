@@ -1,16 +1,33 @@
-import './Textbox.scoped.css';
+import { HtmlTextbox, InputWrapper } from "./Textbox.style";
+import React, { ChangeEvent } from "react";
 
-import React from "react";
-import classnames from "classnames";
+import { Enhancer } from "../../../utilities";
+import { TypeOfEnhancer } from "../../../types";
 import { withProperties } from "../../../contexts/PropertiesContext";
 
 export interface TextboxProps {
-    inputRef: any
+  className?: string;
+  value?: string | number;
+  inputRef?: any;
+  autofocus?: boolean;
+  startEnhancer?: TypeOfEnhancer;
+  endEnhancer?: TypeOfEnhancer;
+
+  onFocus?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Textbox = withProperties((props: TextboxProps)=>{
-    const { inputRef, ...native } = props
-    return <input className='textbox' type="text" ref={inputRef} {...native} />
-})
+export const Textbox = withProperties((props: TextboxProps) => {
+  const { inputRef, ...native } = props;
+  return (
+    <>
+      <InputWrapper>
+        <Enhancer start />
+        <HtmlTextbox type="text" ref={inputRef ?? null} {...native} />
+        <Enhancer end />
+      </InputWrapper>
+    </>
+  );
+});
 
 export default Textbox;

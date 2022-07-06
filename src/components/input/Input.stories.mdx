@@ -1,6 +1,7 @@
 import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
 
 import Input from "./";
+import EditorExample from '../../../examples/editor-example';
 
 <Meta title="Components/Input" component={Input} />
 
@@ -29,10 +30,6 @@ This is a sample
 
 <ArgsTable of={Input} />
 
-
-
-
-
 ## Toggle
 
 <Canvas>
@@ -49,6 +46,22 @@ This is a sample
   </Story>
 </Canvas>
 
+## Quantity
+
+<Canvas>
+  <Story name="quantity" decorators={[Decorator]}>
+    <Input type="quantity" max={10} multiplier={0.1} decimals={1}  />
+  </Story>
+</Canvas>
+
+## Currency
+
+<Canvas>
+  <Story name="currency" decorators={[Decorator]}>
+    <Input type="currency"  />
+  </Story>
+</Canvas>
+
 ## Textbox
 
 <Canvas>
@@ -57,11 +70,102 @@ This is a sample
   </Story>
 </Canvas>
 
-## Rich textbox
+## Transfer
 
 <Canvas>
-  <Story name="Rich Textbox" decorators={[Decorator]}>
-    <Input type="richtextbox" />
+  <Story name="transfer" decorators={[Decorator]}>
+    <div className="text-xs flex-1">
+      <Input type="transfer" items={[
+        {id: '1', text: 'Item 1'},
+        {id: '2', text: 'Item 2'},
+        {id: '3', text: 'Item 3'},
+        {id: '4', text: 'Item 4'},
+        {id: '5', text: 'Item 5'},
+        {id: '6', text: 'Item 6'}
+    ]}  />
+    </div>
   </Story>
 </Canvas>
 
+## selectlist
+
+<Canvas>
+  <Story name="selectlist" decorators={[Decorator]}>
+    <div className="text-xs flex-1">
+      <Input type="selectlist" items={[
+        {id: '1', text: 'Item 1'},
+        {id: '2', text: 'Item 2'},
+        {id: '3', text: 'Item 3'},
+        {id: '4', text: 'Item 4'},
+        {id: '5', text: 'Item 5'},
+        {id: '6', text: 'Item 6'}
+    ]}  />
+    </div>
+  </Story>
+</Canvas>
+
+## selectlist multiple
+
+<Canvas>
+  <Story name="selectlist multiple" decorators={[Decorator]}>
+    <div className="text-xs flex-1">
+      <Input type="selectlist" multiple items={[
+        {id: '1', text: 'Item 1'},
+        {id: '2', text: 'Item 2'},
+        {id: '3', text: 'Item 3'},
+        {id: '4', text: 'Item 4'},
+        {id: '5', text: 'Item 5'},
+        {id: '6', text: 'Item 6'}
+    ]}  />
+    </div>
+  </Story>
+</Canvas>
+
+
+## Address
+
+<Canvas>
+  <Story name="address" decorators={[Decorator]}>
+    <Input type="address" />
+  </Story>
+</Canvas>
+
+## Email
+
+<Canvas>
+  <Story name="email" decorators={[Decorator]}>
+    <Input type="email" domains={['stacksofsnacks.com.au']} />
+  </Story>
+</Canvas>
+
+## Phone
+
+<Canvas>
+  <Story name="phone" decorators={[Decorator]}>
+    <Input type="phone" />
+  </Story>
+</Canvas>
+
+## Textarea
+
+<Canvas>
+  <Story name="Textarea" decorators={[Decorator]}>
+    <Input type="textarea" />
+  </Story>
+</Canvas>
+
+## Richtextarea
+
+<Canvas>
+  <Story name="Richtextarea" decorators={[Decorator]}>
+    <Input type="richtextarea" />
+  </Story>
+</Canvas>
+
+## Builder
+
+<Canvas>
+  <Story name="builder" decorators={[Decorator]}>
+    <EditorExample />
+  </Story>
+</Canvas>

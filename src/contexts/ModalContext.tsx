@@ -1,15 +1,9 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 
 export interface ModalContextProps {
   isOpen: boolean;
-  close: VoidFunction;
-  open: VoidFunction;
+  open: ()=> Promise<void>;
+  close: (aborted?: boolean)=> Promise<void>;
 }
 
-export const ModalContext = createContext<ModalContextProps>({
-  isOpen: false,
-  close: () => {},
-  open: () => {},
-});
-
-export default ModalContext;
+export default createContext<ModalContextProps | null>(null);

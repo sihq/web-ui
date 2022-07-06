@@ -1,8 +1,8 @@
 import "./Steps.scoped.css";
 
-import React, { useContext, useState } from "react";
-
-import SectionsContext from "../../contexts/SectionsContext";
+import { Boundary } from "../../utilities";
+import React from "react";
+import  { useSections } from "../../hooks";
 
 export interface StepsProps {
   children?: React.ReactNode;
@@ -11,8 +11,8 @@ export interface StepsProps {
 const Steps = (props: StepsProps) => {
   const { children } = props;
 
+  const { current, sections } = useSections();
 
-  const [{current = 0, sections = 0}] = useContext(SectionsContext)
   return (
     <>
     <div className="steps">
@@ -32,4 +32,4 @@ const Steps = (props: StepsProps) => {
   );
 };
 
-export default Steps;
+export default Boundary(Steps);

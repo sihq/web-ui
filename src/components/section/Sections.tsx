@@ -1,5 +1,5 @@
 import React from "react";
-import { withSections } from "../../contexts/SectionsContext";
+import { withSections } from "../../hocs";
 
 export interface SectionsProps {
   children?: React.ReactNode;

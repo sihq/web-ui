@@ -1,8 +1,0 @@
-
-
-.pin-input{
- @apply space-x-1 flex items-center flex-1;
-}
-.pin-input input{
-    @apply w-10 text-center;
-}
