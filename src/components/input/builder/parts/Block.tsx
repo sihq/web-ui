@@ -35,11 +35,11 @@ const Block: FunctionComponent<BlockProps> = (props) => {
       onClick={() => select(id)}
       className={`border  relative  rounded p-2 ${
         selected === id
-          ? "outline outline-slate-400 border-slate-400 ring-2 ring-slate-100 ring-opacity-25 shadow-inner"
-          : "border-dashed border-white hover:border-slate-400"
+          ? "outline cursor-default outline-slate-400 border-slate-400 ring-2 ring-slate-100 ring-opacity-25 shadow-inner"
+          : "border-dashed cursor-pointer border-white hover:border-slate-400"
       }`}
     >
-      <div className="bg-white opacity-0 inset-0 absolute"></div>
+      <div className="bg-white opacity-0 inset-0 absolute z-10"></div>
       <Block />
 
       {selected === id ? (
@@ -47,7 +47,7 @@ const Block: FunctionComponent<BlockProps> = (props) => {
           <div className="absolute top-0 left-10 bg-slate-400 text-xs text-white p-0.5 px-2 rounded-full transform -translate-y-1/2">
             {name}
           </div>
-          <div className="absolute top-4 left-0 transform -translate-x-1/2 flex items-center space-x-1">
+          <div className="absolute z-20 top-4 left-0 transform -translate-x-1/2 flex items-center space-x-1">
             <div className="flex flex-col space-y-1 p-1 rounded-full bg-slate-50 shadow-md">
               <span>
                 <Button

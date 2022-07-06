@@ -6,6 +6,7 @@ import React, {
 } from "react";
 
 import { ControllersContext } from "../../contexts";
+import { useControllers } from "../../providers/reactive/hooks";
 import { useQueue } from "../../hooks";
 
 interface ControllersProps {
@@ -22,26 +23,10 @@ function isMountRequest(controllers: { [key: string]: any }) {
 
 const Controllers: FunctionComponent<ControllersProps> = (props) => {
   const { children } = props;
-  const [controllers, setControllers] = useState<{ [key: string]: any }>({});
+  
+  const [controllers, register] = useControllers();
 
   const { addTask, isProcessing, tasks } = useQueue({ shouldProcess: true });
-
-  const mount = useCallback(
-    (uuid: string, controller: any) => {
-      setControllers((currentValue) => {
-        return { ...currentValue, [uuid]: controller };
-      });
-      return () => {
-        setControllers((currentValue) => {
-          const copy = { ...currentValue };
-          delete copy[uuid];
-          return copy;
-        });
-      };
-    },
-    [controllers]
-  );
-  
 
   const dispatch = useCallback(
     (controller: string, method: string, parameters: object) => {
@@ -51,13 +36,13 @@ const Controllers: FunctionComponent<ControllersProps> = (props) => {
         $controller.current.setQueued(() => true);
       }
 
-     
       $controller.current.setScope(() => method);
 
       addTask({
         references: [controller],
         task: () =>
           new Promise((resolve) => {
+          
             const { [controller]: $controller, ...$controllers } = controllers;
 
             // set all other controllers to be refreshing.
@@ -67,11 +52,6 @@ const Controllers: FunctionComponent<ControllersProps> = (props) => {
 
             $controller.current.setScope(() => method);
             $controller.current.setDispatching(() => true);
-
-            if(tasks.filter(({ references })=>references?.includes(controller)).length < 2){
-                $controller.current.setQueued(() => false);
-            }
-        
 
             setTimeout(() => {
               // simulate network request
@@ -133,7 +113,7 @@ const Controllers: FunctionComponent<ControllersProps> = (props) => {
   }, [controllers]);
 
   return (
-    <ControllersContext.Provider value={{ mount, dispatch }}>
+    <ControllersContext.Provider value={{ mount:register, dispatch }}>
       {children}
     </ControllersContext.Provider>
   );
